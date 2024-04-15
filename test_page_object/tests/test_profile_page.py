@@ -8,8 +8,8 @@ from ..urls import URLS
 
 
 class TestLoginPage:
-    @allure.title("Страница авторизации")
-    @allure.description("Заходим на главную страницу, переходим на страницу авторизации")
+    @allure.title("Переход Стартовая страница - Личный кабинет")
+    @allure.description("Проверяем, что после клика по кнопке Личный кабинет адрес страницы равен: " + URLS.LOGIN_PAGE)
     def test_transfer_to_cabinet(self, browser_driver):
         with allure.step('Инициализация браузера и переход на стартовую страницу'):
             profile_page = ProfilePage(browser_driver)
@@ -20,7 +20,8 @@ class TestLoginPage:
             result = browser_driver.current_url
         assert result == URLS.LOGIN_PAGE
 
-    @allure.description("Заходим на главную страницу, переходим на страницу авторизации, авторизуемся, переходим на историю заказов")
+    @allure.title("Заходим на главную страницу, переходим на страницу авторизации, авторизуемся, переходим на историю заказов")
+    @allure.description("Проверяем, что после клика по кнопке История заказов адрес страницы равен: " + URLS.ORDER_HISTORY)
     def test_transfer_to_history(self, browser_driver):
         with allure.step('Инициализация браузера и переход на стартовую страницу'):
             profile_page = ProfilePage(browser_driver)
@@ -36,7 +37,8 @@ class TestLoginPage:
             result = browser_driver.current_url
         assert result == URLS.ORDER_HISTORY
 
-    @allure.description("Заходим на главную страницу, переходим на страницу авторизации, авторизуемся, выходим")
+    @allure.title("Заходим на главную страницу, переходим на страницу авторизации, авторизуемся, выходим")
+    @allure.description("После выхода из Личного кабинета адрес страница должен быть: " + URLS.LOGIN_PAGE)
     def test_auth_and_exit(self, browser_driver):
         with allure.step('Инициализация браузера и переход на стартовую страницу'):
             profile_page = ProfilePage(browser_driver)

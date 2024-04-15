@@ -7,4 +7,4 @@ class LoginPageLocators:
     PASSWORD_FIELD = By.XPATH, "//input[@type='password']"
     BUTTON_ENTRANCE = By.XPATH, "//button[text()='Войти']"
     BUTTON_SHOW = By.CLASS_NAME, "//div[@class='input__icon.input__icon-action']"
-    PARENT_OBJECT = By.XPATH, "./.."
+    EMAIL_FIELD_ACTIVE = By.XPATH, "//div[@class='input pr-6 pl-6 input_type_text input_size_default input_status_active']"

@@ -1,14 +1,14 @@
 import time
-
 from test_page_object.pages.base_page import BasePage
-from ..data import Data
+from ..data import DataParameters
+
 
 class ProfilePage(BasePage):
 
     def transfer_to_cabinet(self,
                             driver,
                             locator_button_cabinet):
-        ProfilePage.click_on_element(self, driver, locator_button_cabinet)
+        self.click_on_element(driver, locator_button_cabinet)
 
     def history_orders(self,
                        driver,
@@ -17,13 +17,13 @@ class ProfilePage(BasePage):
                        locator_password,
                        locator_button_entrance,
                        locator_history):
-        ProfilePage.click_on_element(self, driver, locator_button_cabinet)
-        ProfilePage.set_text_to_element(self, locator_email, Data.email)
-        ProfilePage.set_text_to_element(self, locator_password, Data.password)
-        ProfilePage.click_on_element(self, driver, locator_button_entrance)
+        self.click_on_element(driver, locator_button_cabinet)
+        self.set_text_to_element(locator_email, DataParameters.email)
+        self.set_text_to_element(locator_password, DataParameters.password)
+        self.click_on_element(driver, locator_button_entrance)
         time.sleep(2)
-        ProfilePage.click_on_element(self, driver, locator_button_cabinet)
-        ProfilePage.click_on_element(self, driver, locator_history)
+        self.click_on_element(driver, locator_button_cabinet)
+        self.click_on_element(driver, locator_history)
 
     def authorization_and_exit(self,
                                driver,
@@ -32,10 +32,10 @@ class ProfilePage(BasePage):
                                locator_password,
                                locator_button_entrance,
                                locator_exit):
-        ProfilePage.click_on_element(self, driver, locator_button_cabinet)
-        ProfilePage.set_text_to_element(self, locator_email, Data.email)
-        ProfilePage.set_text_to_element(self, locator_password, Data.password)
-        ProfilePage.click_on_element(self, driver, locator_button_entrance)
+        self.click_on_element(driver, locator_button_cabinet)
+        self.set_text_to_element(locator_email, DataParameters.email)
+        self.set_text_to_element(locator_password, DataParameters.password)
+        self.click_on_element(driver, locator_button_entrance)
         time.sleep(2)
-        ProfilePage.click_on_element(self, driver, locator_button_cabinet)
-        ProfilePage.click_on_element(self, driver, locator_exit)
+        self.click_on_element(driver, locator_button_cabinet)
+        self.click_on_element(driver, locator_exit)

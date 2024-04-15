@@ -35,3 +35,35 @@ class Functions:
             superbody.append(atoken)
 
         return superbody
+
+    @staticmethod
+    def create_order_with_auth_with_ingr(create_user):
+        """
+        создаём тело запроса, затем авторизуемся, создаём заказ
+        и возвращаем запрос
+        :param create_user:
+        :return:
+        """
+        header = \
+            {
+                'Authorization': create_user[3]
+            }
+
+        body = \
+            {
+                "email": create_user[0],
+                "password": create_user[1],
+                "name": create_user[2]
+            }
+        requests.post(URLS.URL_AUTHORIZATION, json=body, headers=header)
+
+        responce_ingredients = requests.get(URLS.URL_CREATE_ORDER)
+        ingredients = responce_ingredients.json()["data"]
+
+        body_order = \
+            {
+                "ingredients": [ingredients[0]["_id"], ingredients[1]["_id"]]
+            }
+
+        responce = requests.post(URLS.URL_GET_ORDERS_USER, json=body_order, headers=header)
+        return responce

@@ -3,20 +3,17 @@ import requests
 from selenium import webdriver
 from test_page_object.urls import URLS
 from functions import Functions
-import allure
 
 
 @pytest.fixture(params=["chrome", "firefox"], scope="function", autouse=True)
 def browser_driver(request):
     browser = request.param
     if browser == "chrome":
-        with allure.step('Открываем браузер Chrome'):
-            driver = webdriver.Chrome()
-            driver.get(URLS.MAIN_PAGE)
+        driver = webdriver.Chrome()
+        driver.get(URLS.MAIN_PAGE)
     elif browser == "firefox":
-        with allure.step('Открываем браузер Firefox'):
-            driver = webdriver.Firefox()
-            driver.get(URLS.MAIN_PAGE)
+        driver = webdriver.Firefox()
+        driver.get(URLS.MAIN_PAGE)
 
     yield driver
 
